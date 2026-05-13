@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Indique e Ganhe — Cienty</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+/* ============================================================
+   CIENTY — LP Indique e Ganhe
+   ============================================================ */
+
+:root {
+  --primary-main:    #DC36C0;
+  --primary-hover:   #A3258E;
+  --accent:          #FFB92A;
+  --text-primary:    #2F2F32;
+  --text-secondary:  #6D7079;
+  --background:      #EEEFF1;
+  --surface:         #FFFFFF;
+  --success:         #0E8345;
+  --warning:         #F6BC2F;
+  --error:           #DE1135;
+
+  --border:        rgba(47, 47, 50, 0.12);
+  --border-strong: rgba(47, 47, 50, 0.20);
+  --primary-soft:  rgba(220, 54, 192, 0.10);
+  --primary-tint:  rgba(220, 54, 192, 0.18);
+  --accent-soft:   rgba(255, 185, 42, 0.12);
+  --success-soft:  rgba(14, 131, 69, 0.10);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+button { font-family: inherit; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  color: var(--text-primary);
+  background: var(--background);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+.section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--primary-main);
+  margin-bottom: 12px;
+}
+
+/* ── NAV ─────────────────────────────────────────────────── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  height: 64px;
+  display: flex;
+  align-items: center;
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  text-decoration: none;
+}
+.nav-logo svg {
+  height: 28px;
+  width: auto;
+  fill: var(--text-primary);
+  display: block;
+}
+.nav-cta {
+  background: var(--primary-main);
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  border-radius: 2px;
+}
+.nav-cta:hover { background: var(--primary-hover); }
+.nav-cta:focus-visible { outline: 2px solid var(--primary-main); outline-offset: 2px; }
+
+/* ── HERO ────────────────────────────────────────────────── */
+.hero {
+  background: var(--text-primary);
+  padding: 96px 24px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -120px; right: -120px;
+  width: 420px; height: 420px;
+  background: var(--primary-main);
+  opacity: 0.10;
+  transform: rotate(8deg);
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; left: 28%;
+  width: 240px; height: 240px;
+  background: var(--accent);
+  opacity: 0.08;
+  transform: rotate(-6deg);
+}
+.hero-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 64px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.hero-new {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--primary-tint);
+  border: 1px solid rgba(220, 54, 192, 0.35);
+  padding: 5px 14px 5px 6px;
+  margin-bottom: 24px;
+  border-radius: 2px;
+}
+.hero-new span:first-child {
+  background: var(--primary-main);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 2px;
+}
+.hero-new span:last-child {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+}
+.hero h1 {
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #fff;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+.hero-sub {
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.6;
+  margin-bottom: 0;
+  max-width: 500px;
+}
+
+/* Hero card */
+.hero-card {
+  background: var(--surface);
+  padding: 28px 28px 28px 32px;
+  position: relative;
+  border-radius: 2px;
+}
+.hero-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--primary-main);
+}
+.hero-card-reward {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+.hero-card-amount {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--primary-main);
+  line-height: 1;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+.hero-card hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin-bottom: 20px;
+}
+.hero-stat {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  gap: 12px;
+}
+.hero-stat:last-child { margin-bottom: 0; }
+.hero-stat span:first-child {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+.hero-stat span:last-child {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: right;
+}
+.hero-stat span:last-child.success { color: var(--success); }
+
+/* ── SEÇÕES ──────────────────────────────────────────────── */
+section { padding: 80px 0; background: var(--surface); }
+
+.section-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+.section-header.tight {
+  margin-bottom: 56px;
+}
+.section-header h2 {
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin-bottom: 0;
+  color: var(--text-primary);
+}
+
+/* ── HOW IT WORKS (5 steps, sem badges numéricos) ──────── */
+.steps-grid {
+  display: grid;
+  grid-template-columns: 1fr 24px 1fr 24px 1fr 24px 1fr 24px 1fr;
+  gap: 0;
+  align-items: start;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.step-item {
+  text-align: center;
+  padding: 0 8px;
+}
+.step-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 24px;
+  color: var(--border-strong);
+  font-size: 22px;
+}
+.step-icon-wrap {
+  width: 56px;
+  height: 56px;
+  background: var(--primary-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  font-size: 24px;
+  border-radius: 2px;
+}
+.step-icon-wrap.accent  { background: var(--accent-soft); }
+.step-icon-wrap.success { background: var(--success-soft); }
+.step-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+.step-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ── TESTIMONIALS ────────────────────────────────────────── */
+.testimonials-block { margin-bottom: 56px; }
+.testimonials-block:last-child { margin-bottom: 0; }
+.testimonials-group-label {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+.testimonials-group-label h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.tg-tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  color: #fff;
+  border-radius: 2px;
+}
+.tg-tag--magenta { background: var(--primary-main); }
+.tg-tag--dark    { background: var(--text-primary); }
+
+.testimonials-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.testimonial-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 2px;
+}
+.testimonial-card.alt-bg {
+  background: var(--background);
+  border-color: var(--border);
+}
+.quote-mark {
+  font-size: 40px;
+  line-height: 1;
+  color: var(--primary-main);
+  font-family: Georgia, serif;
+  margin-bottom: 8px;
+}
+.quote-mark--dark { color: var(--text-primary); }
+.testimonial-card blockquote {
+  font-size: 14px;
+  color: var(--text-primary);
+  line-height: 1.7;
+  flex: 1;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+/* Avatar quadrado com foto */
+.author-avatar {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 2px;
+  object-fit: cover;
+  display: block;
+  background: var(--background);
+}
+.author-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.author-pharmacy {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* ── FAQ ─────────────────────────────────────────────────── */
+.faq-list {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.faq-item {
+  border: 1px solid var(--border);
+  overflow: hidden;
+  background: var(--surface);
+  border-radius: 2px;
+}
+.faq-q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: 18px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  cursor: pointer;
+  user-select: none;
+  background: var(--surface);
+  border: none;
+  text-align: left;
+  transition: background 0.1s ease;
+}
+.faq-q-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+.faq-q:hover { background: var(--background); }
+.faq-q:focus-visible {
+  outline: 2px solid var(--primary-main);
+  outline-offset: -2px;
+}
+/* Quando o item está aberto, o hover pinta a pergunta inteira E adiciona
+   um respiro visual antes da resposta para o cinza não colar no texto. */
+.faq-item.open .faq-q:hover { padding-bottom: 12px; }
+.faq-item.open .faq-q:hover + .faq-a { padding-top: 6px; }
+
+.faq-q .arrow {
+  color: var(--primary-main);
+  font-size: 18px;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+.faq-a {
+  display: none;
+  padding: 0 20px 18px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  background: var(--surface);
+  transition: padding-top 0.15s ease;
+}
+.faq-item.open .faq-a { display: block; }
+.faq-item.open .arrow { transform: rotate(180deg); }
+
+/* Variante "no-toggle": pergunta sem colapso (usada quando o conteúdo
+   ainda não está disponível e a etiqueta 'Em breve' já explica). */
+.faq-item.no-toggle .faq-q { cursor: default; }
+.faq-item.no-toggle .faq-q:hover { background: var(--surface); }
+.faq-item.no-toggle .arrow { display: none; }
+
+.badge-soon {
+  display: inline-flex;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  background: var(--accent-soft);
+  color: #8a5e00;
+  border: 1px solid rgba(255, 185, 42, 0.45);
+  border-radius: 2px;
+  flex-shrink: 0;
+  line-height: 1.4;
+}
+
+/* ── FINAL CTA ───────────────────────────────────────────── */
+.cta-section {
+  background: var(--primary-main);
+  padding: 80px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: -80px; left: -80px;
+  width: 280px; height: 280px;
+  background: rgba(255, 255, 255, 0.08);
+  transform: rotate(15deg);
+}
+.cta-section::after {
+  content: '';
+  position: absolute;
+  bottom: -100px; right: 8%;
+  width: 320px; height: 320px;
+  background: rgba(255, 255, 255, 0.06);
+  transform: rotate(-12deg);
+}
+.cta-section .cta-kicker {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  padding: 4px 12px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+  border-radius: 2px;
+}
+.cta-section h2 {
+  font-size: 38px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+}
+.cta-section p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.82);
+  margin-bottom: 36px;
+  position: relative;
+  z-index: 1;
+  line-height: 1.6;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.cta-form {
+  display: inline-flex;
+  gap: 8px;
+  align-items: stretch;
+  position: relative;
+  z-index: 1;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100%;
+}
+.cta-input {
+  background: #fff;
+  border: 1px solid transparent;
+  padding: 16px 18px;
+  font-size: 15px;
+  font-family: inherit;
+  color: var(--text-primary);
+  width: 280px;
+  border-radius: 2px;
+  outline: none;
+}
+.cta-input:focus {
+  border-color: var(--text-primary);
+}
+.cta-input::placeholder {
+  color: var(--text-secondary);
+}
+.btn-cta-dark {
+  background: var(--text-primary);
+  color: #fff;
+  border: none;
+  padding: 16px 28px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  display: inline-block;
+  text-decoration: none;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+.btn-cta-dark:hover {
+  background: #000;
+}
+.cta-note {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 18px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── FOOTER ──────────────────────────────────────────────── */
+footer {
+  background: var(--text-primary);
+  padding: 32px 24px;
+}
+.footer-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.footer-logo {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  text-decoration: none;
+}
+.footer-logo svg {
+  height: 24px;
+  width: auto;
+  fill: #fff;
+  display: block;
+}
+.footer-text {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .hero { padding: 64px 24px 56px; }
+  .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  .hero h1 { font-size: 36px; }
+  .hero-card { order: 2; }
+
+  .steps-grid { grid-template-columns: 1fr; gap: 28px; }
+  .step-arrow { display: none; }
+
+  .testimonials-row { grid-template-columns: 1fr; }
+  .testimonials-group-label { flex-direction: column; align-items: flex-start; gap: 8px; }
+
+  .section-header h2 { font-size: 28px; }
+  .cta-section h2 { font-size: 28px; }
+
+  .cta-input { width: 100%; }
+  .cta-form { flex-direction: column; width: 100%; max-width: 360px; }
+
+  .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+}
+
+@media (max-width: 600px) {
+  section { padding: 56px 0; }
+  .hero h1 { font-size: 30px; }
+  .hero-sub { font-size: 15px; }
+  .nav-cta { padding: 8px 14px; font-size: 11px; }
+  .nav-logo svg { height: 24px; }
+}
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo" aria-label="Cienty">
+      <svg viewBox="0 0 1500 525.36" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+        <path d="M225.37,373.42c-19.38,17.02-44.54,26.4-70.82,26.4-59.53,0-104.42-44.63-104.42-103.83s43.92-103.24,104.42-103.24c26.5,0,52.29,9.6,70.76,26.35l29.88-33.37c-26.11-24.83-63.23-39.08-101.82-39.08C67.23,146.65,2.27,210.85,2.27,295.99s64.96,149.91,151.09,149.91c39,0,76.33-14.24,102.41-39.07l-30.41-33.41Z"/>
+        <rect x="310.18" y="153.71" width="47.85" height="285.12"/>
+        <path d="M562.54,146.65c-83.8,0-144.62,62.56-144.62,148.75s60.82,150.51,144.62,150.51c54.13,0,102.98-27.86,127.51-72.71l-41.2-19.21c-17.44,28.7-49.27,45.84-85.13,45.84-52.53,0-89.34-31.58-97.23-82.86h235.42l.5-4.53c.63-5.65,1.21-11.62,1.21-17.04,0-87.58-58.02-148.75-141.08-148.75ZM467.19,274.41c8.82-51.26,44.1-81.66,95.35-81.66s85.72,31.85,92.61,81.66h-187.96Z"/>
+        <path d="M899.29,146.65c-30.66,0-68.9,13.4-90.29,42.41v-35.35h-47.85v285.12h47.85v-157.49c1.15-64.46,45.57-87.43,86.76-87.43s72.63,33.5,72.63,81.46v163.46h47.85v-165.23c0-77.12-45.91-126.96-116.95-126.96Z"/>
+        <polygon points="1124.35 196.27 1187.34 196.27 1187.34 153.71 1124.35 153.71 1124.35 80.88 1077.08 80.88 1077.08 438.84 1207.22 438.84 1207.22 396.31 1124.35 396.31 1124.35 196.27"/>
+        <polygon points="1446.06 153.71 1354.67 370.52 1264.42 153.71 1212.77 153.71 1328.53 430.81 1289.74 524.56 1341.15 524.56 1497.73 153.71 1446.06 153.71"/>
+        <path d="M276,117.01h116.21V.8h-116.21v116.21ZM294.15,18.95h79.9v79.9h-79.9V18.95Z"/>
+      </svg>
+    </a>
+    <button class="nav-cta" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">Avise-me no lançamento</button>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-new">
+        <span>Novo</span>
+        <span>Programa de Indicações — Cienty</span>
+      </div>
+      <h1>Sua indicação vale muito.</h1>
+      <p class="hero-sub">
+        Você já recomenda a Cienty para colegas de confiança. Agora transformamos isso em um programa de verdade — com reconhecimento e R$ 50 em crédito para cada farmácia que você trouxer.
+      </p>
+    </div>
+
+    <div class="hero-card">
+      <div class="hero-card-reward">Você recebe por indicação</div>
+      <div class="hero-card-amount">R$ 50</div>
+      <hr/>
+      <div class="hero-stat">
+        <span>Quando você recebe</span>
+        <span>No 1º pedido do indicado</span>
+      </div>
+      <div class="hero-stat">
+        <span>Limite de indicações</span>
+        <span class="success">Sem limite</span>
+      </div>
+      <div class="hero-stat">
+        <span>Quem pode indicar</span>
+        <span>Qualquer cliente ativo</span>
+      </div>
+      <div class="hero-stat">
+        <span>Como vou receber?</span>
+        <span>Pix direto na conta</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS (5 steps) ── -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Como funciona</div>
+      <h2>Veja como é simples</h2>
+    </div>
+  </div>
+
+  <div class="steps-grid">
+    <div class="step-item">
+      <div class="step-icon-wrap"><span>🔗</span></div>
+      <div class="step-title">Gere seu link</div>
+      <div class="step-desc">Clique em "Indique e Ganhe" para criar seu link exclusivo de convite.</div>
+    </div>
+
+    <div class="step-arrow">→</div>
+
+    <div class="step-item">
+      <div class="step-icon-wrap"><span>📲</span></div>
+      <div class="step-title">Compartilhe</div>
+      <div class="step-desc">Envie o link para seus colegas via WhatsApp, e-mail ou redes sociais.</div>
+    </div>
+
+    <div class="step-arrow">→</div>
+
+    <div class="step-item">
+      <div class="step-icon-wrap"><span>✅</span></div>
+      <div class="step-title">Amigo compra</div>
+      <div class="step-desc">Seu indicado se cadastra e realiza o primeiro pedido na plataforma.</div>
+    </div>
+
+    <div class="step-arrow">→</div>
+
+    <div class="step-item">
+      <div class="step-icon-wrap accent"><span>🛒</span></div>
+      <div class="step-title">Dinheiro no PIX</div>
+      <div class="step-desc">Pronto! Você recebe R$ 50 direto na sua conta por indicação confirmada.</div>
+    </div>
+
+    <div class="step-arrow">→</div>
+
+    <div class="step-item">
+      <div class="step-icon-wrap success"><span>🤝</span></div>
+      <div class="step-title">Todos ganham</div>
+      <div class="step-desc">Após o primeiro pedido, a farmácia indicada também leva R$ 50.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section>
+  <div class="container">
+    <div class="section-header tight">
+      <div class="section-label">Quem já viveu isso</div>
+      <h2>Quem usa a Cienty recomenda</h2>
+    </div>
+
+    <!-- quem indicou -->
+    <div class="testimonials-block">
+      <div class="testimonials-group-label">
+        <div class="tg-tag tg-tag--magenta">Quem indicou</div>
+        <h3>O que disseram nossos clientes que já indicam</h3>
+      </div>
+      <div class="testimonials-row">
+
+        <div class="testimonial-card">
+          <div class="quote-mark">"</div>
+          <blockquote>
+            Eu já indicava a Cienty para os meus colegas de associação mesmo sem ganhar nada. Quando apareceu um link rastreado, ficou muito mais fácil provar que fui eu quem trouxe. É bom sentir que isso é valorizado.
+          </blockquote>
+          <div class="testimonial-author">
+            <img class="author-avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="" />
+            <div>
+              <div class="author-name">Marcos Oliveira</div>
+              <div class="author-pharmacy">Farmácia Vida Nova · São Paulo, SP</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="quote-mark">"</div>
+          <blockquote>
+            Quando vi que podia ganhar crédito indicando, conversei com dois colegas na mesma semana. O que me motivou foi mesmo querer ajudar — o crédito foi uma surpresa muito boa no final do mês.
+          </blockquote>
+          <div class="testimonial-author">
+            <img class="author-avatar" src="https://randomuser.me/api/portraits/women/44.jpg" alt="" />
+            <div>
+              <div class="author-name">Ana Paula Santos</div>
+              <div class="author-pharmacy">Farmácia Saúde & Bem · Santos, SP</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="quote-mark">"</div>
+          <blockquote>
+            Indiquei minha parceira de associação porque sabia que a Cienty ia fazer diferença no dia a dia dela. O crédito foi ótimo, claro — mas o que ficou foi a satisfação de ter ajudado ela a economizar de verdade.
+          </blockquote>
+          <div class="testimonial-author">
+            <img class="author-avatar" src="https://randomuser.me/api/portraits/men/68.jpg" alt="" />
+            <div>
+              <div class="author-name">Ricardo Ferreira</div>
+              <div class="author-pharmacy">Drogaria Familiar · Campinas, SP</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- quem foi indicado -->
+    <div class="testimonials-block">
+      <div class="testimonials-group-label">
+        <div class="tg-tag tg-tag--dark">Quem foi indicado</div>
+        <h3>O que dizem os clientes que chegaram por indicação</h3>
+      </div>
+      <div class="testimonials-row">
+
+        <div class="testimonial-card alt-bg">
+          <div class="quote-mark quote-mark--dark">"</div>
+          <blockquote>
+            Entrei na Cienty porque uma amiga dona de farmácia me indicou pessoalmente. Se fosse só propaganda, eu provavelmente nem teria prestado atenção. A indicação de alguém que confio pesou muito mais.
+          </blockquote>
+          <div class="testimonial-author">
+            <img class="author-avatar" src="https://randomuser.me/api/portraits/women/65.jpg" alt="" />
+            <div>
+              <div class="author-name">Patrícia Lima</div>
+              <div class="author-pharmacy">Farmácia Central · Sorocaba, SP</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card alt-bg">
+          <div class="quote-mark quote-mark--dark">"</div>
+          <blockquote>
+            Eu já tinha ouvido falar da Cienty, mas estava na dúvida. Foi quando um colega me mostrou como usava no dia a dia e me mandou o link que eu decidi testar. Em duas semanas eu já estava comprando pelo app.
+          </blockquote>
+          <div class="testimonial-author">
+            <img class="author-avatar" src="https://randomuser.me/api/portraits/men/52.jpg" alt="" />
+            <div>
+              <div class="author-name">Carlos Eduardo</div>
+              <div class="author-pharmacy">Farmácia Boa Saúde · Guarulhos, SP</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card alt-bg">
+          <div class="quote-mark quote-mark--dark">"</div>
+          <blockquote>
+            Recebi o link pelo WhatsApp de uma pessoa que admiro muito no setor. Aquilo me passou confiança de um jeito que nenhum anúncio consegue. Entrei, testei e fiquei. É simples assim.
+          </blockquote>
+          <div class="testimonial-author">
+            <img class="author-avatar" src="https://randomuser.me/api/portraits/women/28.jpg" alt="" />
+            <div>
+              <div class="author-name">Fernanda Costa</div>
+              <div class="author-pharmacy">Drogaria Nova Era · São Bernardo do Campo, SP</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section>
+  <div class="container">
+    <div class="section-header tight">
+      <div class="section-label">Perguntas frequentes</div>
+      <h2>Tudo que você precisa saber</h2>
+    </div>
+
+    <div class="faq-list" id="faq">
+
+      <div class="faq-item open">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="true">
+          <span class="faq-q-text">Quem pode indicar?</span>
+          <span class="arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          Toda farmácia já cadastrada na Cienty pode indicar outras farmácias.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          <span class="faq-q-text">Tem limite de indicações?</span>
+          <span class="arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          Não. Você pode indicar quantas farmácias quiser e gerar crédito para cada indicação confirmada. Cada indicação usa um link único que garante que a recompensa vai para você.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          <span class="faq-q-text">O que acontece se a farmácia já for cadastrada?</span>
+          <span class="arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          A indicação só é válida para farmácias que ainda não têm cadastro na Cienty. Se o colega já for cliente, a indicação não será contabilizada e o valor não será liberado.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          <span class="faq-q-text">Quando e onde vou receber o valor de R$ 50?</span>
+          <span class="arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          O pagamento é feito via Pix na chave CNPJ da farmácia, logo após a indicada realizar o primeiro pedido na plataforma.
+        </div>
+      </div>
+
+      <div class="faq-item no-toggle">
+        <div class="faq-q" aria-disabled="true">
+          <span class="faq-q-text">
+            Como acompanho minhas indicações?
+            <span class="badge-soon">Em breve</span>
+          </span>
+          <span class="arrow">▾</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FINAL CTA ── -->
+<div id="cta">
+  <div class="cta-section">
+    <span class="cta-kicker">Em breve</span>
+    <h2>Quase pronto para você indicar</h2>
+    <p>
+      Estamos finalizando os últimos detalhes para colocar o programa no ar. Deixe seu e-mail e a gente avisa em primeira mão assim que estiver disponível.
+    </p>
+    <form class="cta-form" onsubmit="event.preventDefault(); handleNotify(this);">
+      <input class="cta-input" type="email" name="email" placeholder="seu@email.com" required />
+      <button type="submit" class="btn-cta-dark">Avise-me no lançamento</button>
+    </form>
+    <div class="cta-note">Sem spam. Você recebe um único e-mail quando o programa estiver no ar.</div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <a href="#" class="footer-logo" aria-label="Cienty">
+      <svg viewBox="0 0 1500 525.36" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+        <path d="M225.37,373.42c-19.38,17.02-44.54,26.4-70.82,26.4-59.53,0-104.42-44.63-104.42-103.83s43.92-103.24,104.42-103.24c26.5,0,52.29,9.6,70.76,26.35l29.88-33.37c-26.11-24.83-63.23-39.08-101.82-39.08C67.23,146.65,2.27,210.85,2.27,295.99s64.96,149.91,151.09,149.91c39,0,76.33-14.24,102.41-39.07l-30.41-33.41Z"/>
+        <rect x="310.18" y="153.71" width="47.85" height="285.12"/>
+        <path d="M562.54,146.65c-83.8,0-144.62,62.56-144.62,148.75s60.82,150.51,144.62,150.51c54.13,0,102.98-27.86,127.51-72.71l-41.2-19.21c-17.44,28.7-49.27,45.84-85.13,45.84-52.53,0-89.34-31.58-97.23-82.86h235.42l.5-4.53c.63-5.65,1.21-11.62,1.21-17.04,0-87.58-58.02-148.75-141.08-148.75ZM467.19,274.41c8.82-51.26,44.1-81.66,95.35-81.66s85.72,31.85,92.61,81.66h-187.96Z"/>
+        <path d="M899.29,146.65c-30.66,0-68.9,13.4-90.29,42.41v-35.35h-47.85v285.12h47.85v-157.49c1.15-64.46,45.57-87.43,86.76-87.43s72.63,33.5,72.63,81.46v163.46h47.85v-165.23c0-77.12-45.91-126.96-116.95-126.96Z"/>
+        <polygon points="1124.35 196.27 1187.34 196.27 1187.34 153.71 1124.35 153.71 1124.35 80.88 1077.08 80.88 1077.08 438.84 1207.22 438.84 1207.22 396.31 1124.35 396.31 1124.35 196.27"/>
+        <polygon points="1446.06 153.71 1354.67 370.52 1264.42 153.71 1212.77 153.71 1328.53 430.81 1289.74 524.56 1341.15 524.56 1497.73 153.71 1446.06 153.71"/>
+        <path d="M276,117.01h116.21V.8h-116.21v116.21ZM294.15,18.95h79.9v79.9h-79.9V18.95Z"/>
+      </svg>
+    </a>
+    <div class="footer-text">© 2026 Cienty · Programa de Indicações · Todos os direitos reservados</div>
+  </div>
+</footer>
+
+<script>
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const isOpen = item.classList.toggle('open');
+  el.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+}
+
+function handleNotify(form) {
+  const email = form.email.value.trim();
+  if (!email) return;
+  const btn = form.querySelector('button');
+  const original = btn.textContent;
+  btn.textContent = '✓ Avisaremos você';
+  btn.disabled = true;
+  form.email.value = '';
+  setTimeout(() => { btn.textContent = original; btn.disabled = false; }, 4000);
+}
+</script>
+
+</body>
+</html>
